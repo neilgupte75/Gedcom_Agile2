@@ -1,0 +1,48 @@
+
+
+Individuals Information----------------------->
++-----+------------------+--------+------------+-----+-------+------------+-------+--------+
+|  ID |       Name       | Gender |  Birthday  | Age | Alive |   Death    | Child | Spouse |
++-----+------------------+--------+------------+-----+-------+------------+-------+--------+
+| I01 |   Joe /Smith/    |   M    | 1960-07-15 |  -1 | False | 1959-12-31 |   NA  |  F23   |
+| I07 | Jennifer /Smith/ |   F    | 1960-09-23 |  38 | False | 1998-09-23 |   NA  |   NA   |
+| I19 |   Dick /Smith/   |   M    | 1981-02-13 |  38 |  True |     NA     |  F23  |   NA   |
+| I26 |   Jane /Smith/   |   F    | 1983-06-02 |  36 |  True |     NA     |  F23  |   NA   |
+| I30 |       Joel       |   M    | 2021-06-02 |  0  | False | 2021-12-31 |   NA  |  F24   |
+| I31 |      Jimmy       |   F    | 2009-06-02 |  10 |  True |     NA     |   NA  |  F24   |
+| I32 |       Jane       |   M    | 2018-06-02 |  1  |  True |     NA     |   NA  |  F25   |
+| I33 |      Wooly       |   F    | 2019-06-02 |  0  |  True |     NA     |   NA  |  F25   |
+| I34 |      Winga       |   F    | 1750-06-02 | 263 | False | 2013-12-31 |  F25  |   NA   |
+| I35 |      Chinga      |   F    | 1850-06-02 | 169 |  True |     NA     |  F25  |   NA   |
+| I36 |      Shini       |   M    | 2019-06-02 |  0  |  True |     NA     |   NA  |  F26   |
+| I37 |     Comango      |   F    | 2019-06-02 |  0  |  True |     NA     |   NA  |  F26   |
++-----+------------------+--------+------------+-----+-------+------------+-------+--------+
+
+
+Family Information----------------------->
++-----+------------+------------+------------+--------------+---------+------------------+----------------+
+|  ID |  Married   |  Divorced  | Husband ID | Husband Name | Wife ID |    Wife Name     |    Children    |
++-----+------------+------------+------------+--------------+---------+------------------+----------------+
+| F23 | 1980-02-14 | 1999-02-14 |    I01     | Joe /Smith/  |   I07   | Jennifer /Smith/ | ['I19', 'I26'] |
+| F24 | 2022-02-14 | 2023-02-14 |    I30     |     Joel     |   I31   |      Jimmy       |       []       |
+| F25 | 2017-02-14 |     NA     |    I32     |     Jane     |   I33   |      Wooly       | ['I34', 'I35'] |
+| F26 | 2018-02-14 | 2017-02-14 |    I36     |    Shini     |   I37   |     Comango      |       []       |
++-----+------------+------------+------------+--------------+---------+------------------+----------------+
+ERROR: INDIVIDUAL: US01: I30: Birthday 2021-06-02 is after todays date
+ERROR: INDIVIDUAL: US01: I30: Death Date 2021-12-31 is after todays date
+ERROR: FAMILY: US01: F24: Marriage Date 2022-02-14  is after todays date
+ERROR: FAMILY: US01: F24: Divorce Date 2023-02-14  is after todays date
+ERROR: INDIVIDUAL: US02: I33: Birth Date OF Wife:2019-06-02 is after Marriage Date:2017-02-14
+ERROR: INDIVIDUAL: US02: I32: Birth Date OF Husband:2018-06-02 is after Marriage Date:2017-02-14
+ERROR: INDIVIDUAL: US02: I37: Birth Date OF Wife:2019-06-02 is after Marriage Date:2018-02-14
+ERROR: INDIVIDUAL: US02: I36: Birth Date OF Husband:2019-06-02 is after Marriage Date:2018-02-14
+ERROR: INDIVIDUAL: US03: I01 : Died 1959-12-31 before born 1960-07-15 
+ERROR: FAMILY: US04: F26: Divorced 2017-02-14 before married 2018-02-14 
+ERROR: FAMILY: US05: F23 : Marriage of husband:I01 occurs after death
+ERROR: FAMILY: US05: F24 : Marriage of husband:I30 occurs after death
+ERROR: FAMILY: US06: F23 : Divorce 1999-02-14 is after death 1959-12-31
+ERROR: FAMILY: US06: F23 : Divorce 1999-02-14 is after death 1998-09-23
+ERROR: INDIVIDUAL: US07: I34: Birth Date OF Deceased Individual:1750-06-02 and Death Date OF Deceased Individual:2013-12-31 Age is more than 150 years
+ERROR: INDIVIDUAL: US07: I35: Birth Date OF Individual:1850-06-02 Age is more than 150 years
+ANOMALY: FAMILY: US08: I34: born 1750-06-02 before marriage on 2017-02-14
+ANOMALY: FAMILY: US08: I35: born 1850-06-02 before marriage on 2017-02-14
